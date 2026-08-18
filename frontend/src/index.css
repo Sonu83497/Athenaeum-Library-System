@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-paper text-ink font-sans;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-forest-dark;
+  }
+  :focus-visible {
+    outline: 2px solid #B8863B;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Signature element: library due-date "ink stamp" status badges, used
+     throughout for borrow/fine/member status instead of generic pills. */
+  .stamp {
+    @apply inline-flex items-center gap-1.5 rounded-sm border-2 px-2.5 py-0.5
+           text-xs font-mono font-semibold uppercase tracking-wider;
+    transform: rotate(-1.5deg);
+  }
+  .stamp-active {
+    @apply stamp border-stamp-green text-stamp-green;
+  }
+  .stamp-overdue {
+    @apply stamp border-stamp-red text-stamp-red;
+  }
+  .stamp-returned {
+    @apply stamp border-ink-light text-ink-light;
+  }
+  .stamp-unpaid {
+    @apply stamp border-stamp-red text-stamp-red;
+  }
+  .stamp-paid {
+    @apply stamp border-stamp-green text-stamp-green;
+  }
+
+  .card {
+    @apply rounded-card border border-forest/10 bg-white shadow-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-card bg-forest px-4 py-2
+           text-sm font-semibold text-paper transition-colors hover:bg-forest-light
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-card border border-forest/20 bg-white px-4 py-2
+           text-sm font-semibold text-forest-dark transition-colors hover:bg-paper-dim
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-card bg-stamp-red px-4 py-2
+           text-sm font-semibold text-white transition-colors hover:opacity-90
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .input {
+    @apply w-full rounded-card border border-forest/20 bg-white px-3 py-2 text-sm
+           placeholder:text-ink-light/60 focus:border-brass focus:outline-none;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-ink-light;
+  }
+}
